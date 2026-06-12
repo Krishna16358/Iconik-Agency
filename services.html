@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Services | Iconik Agency — Website Design, Social Media & Digital Marketing</title>
+<meta name="description" content="Website design, social media management, digital marketing, and lead generation services by Iconik Agency in Aurangabad."/>
+<link rel="stylesheet" href="_shared.css"/>
+<style>
+.svc-full{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:24px}
+.svc-big{padding:36px;display:flex;flex-direction:column}
+.svc-icon-wrap{width:56px;height:56px;border-radius:14px;margin-bottom:22px}
+.svc-features{list-style:none;margin-top:18px;display:flex;flex-direction:column;gap:10px}
+.svc-features li{display:flex;align-items:flex-start;gap:10px;font-size:14px;color:#8A8A96;line-height:1.5}
+.svc-features li svg{flex-shrink:0;margin-top:2px;color:#7C5CFC}
+.svc-price{margin-top:auto;padding-top:22px;border-top:1px solid rgba(255,255,255,.05);display:flex;justify-content:space-between;align-items:center}
+.who-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px}
+.who-card{padding:22px;text-align:center;border-radius:14px;border:1px solid rgba(255,255,255,.06);transition:border-color .3s,background .3s}
+.who-card:hover{border-color:rgba(124,92,252,.2);background:rgba(124,92,252,.03)}
+.who-icon{width:48px;height:48px;border-radius:12px;background:rgba(124,92,252,.08);display:flex;align-items:center;justify-content:center;margin:0 auto 12px;color:#7C5CFC}
+.faq-item{border-radius:12px;border:1px solid rgba(255,255,255,.06);overflow:hidden;transition:background .3s;margin-bottom:8px}
+.faq-item.open{background:rgba(255,255,255,.02)}
+.faq-btn{width:100%;display:flex;justify-content:space-between;align-items:center;padding:18px 22px;background:none;border:none;color:#D8D8E0;font-size:15px;font-weight:600;cursor:pointer;text-align:left;font-family:inherit;gap:12px}
+.faq-btn svg{min-width:17px;color:#5E5E68;transition:transform .3s;flex-shrink:0}
+.faq-item.open .faq-btn svg{transform:rotate(180deg)}
+.faq-answer{max-height:0;overflow:hidden;transition:max-height .4s cubic-bezier(.16,1,.3,1)}
+.faq-item.open .faq-answer{max-height:300px}
+.faq-answer p{padding:0 22px 18px;font-size:14px;color:#5E5E68;line-height:1.7}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo"><div class="nav-logo-icon">I</div><span class="nav-logo-text">Iconik</span><span class="nav-logo-sub">Agency</span></a>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html"    class="nav-link">Home</a>
+      <a href="services.html" class="nav-link active">Services</a>
+      <a href="work.html"     class="nav-link">Our Work</a>
+      <a href="process.html"  class="nav-link">Process</a>
+      <a href="contact.html"  class="nav-link">Contact</a>
+      <a href="contact.html"  class="btn-cta nav-cta">Book Free Call</a>
+    </div>
+    <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+      <svg id="menuIcon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      <svg id="closeIcon" style="display:none" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html"    class="nav-link">Home</a>
+    <a href="services.html" class="nav-link active">Services</a>
+    <a href="work.html"     class="nav-link">Our Work</a>
+    <a href="process.html"  class="nav-link">Process</a>
+    <a href="contact.html"  class="nav-link">Contact</a>
+    <a href="contact.html"  class="btn-cta">Book Free Call</a>
+  </div>
+</nav>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="page-hero-orb anim-orb1" style="top:0;left:20%;width:400px;height:400px;background:radial-gradient(circle,rgba(124,92,252,.12),transparent 65%)"></div>
+  <div class="page-hero-orb anim-orb2" style="bottom:0;right:15%;width:320px;height:320px;background:radial-gradient(circle,rgba(91,142,239,.09),transparent 65%)"></div>
+  <div class="page-hero-grid"></div>
+  <div style="position:relative;z-index:2;max-width:720px;margin:0 auto">
+    <div class="reveal"><span class="label">What We Offer</span></div>
+    <div class="reveal" style="transition-delay:.08s"><h1 style="margin-bottom:18px">Services Built Around <span style="background:linear-gradient(135deg,#9B7BFF,#7C5CFC,#5B8DEF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">Your Goals</span></h1></div>
+    <div class="reveal" style="transition-delay:.15s"><p class="sub" style="margin:0 auto">Every service we offer is designed with one outcome in mind — growing your business. No fluff, no filler.</p></div>
+  </div>
+</section>
+
+<!-- FULL SERVICES -->
+<section class="section" style="border-top:1px solid rgba(255,255,255,.04)">
+  <div class="container">
+    <div class="svc-full">
+
+      <!-- SERVICE 1 -->
+      <div class="card svc-big reveal" style="transition-delay:.05s">
+        <div class="icon-box svc-icon-wrap"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+        <div style="font-size:11px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:#7C5CFC;margin-bottom:8px">Core Service</div>
+        <h3 style="font-size:22px;margin-bottom:12px">Website Design & Development</h3>
+        <p style="font-size:15px;color:#5E5E68;line-height:1.7;flex:1">We design and build websites that do more than look good — they work hard to bring in customers. Every site is built mobile-first, optimized for speed, and structured to rank on Google and convert visitors into leads.</p>
+        <ul class="svc-features">
+          <li><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Custom design — no templates</li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Mobile-first, fully responsive</li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Fast loading — under 2 seconds</li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>On-page SEO foundations built in</li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Lead capture forms and CTAs</li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Delivered in 2–4 weeks</li>
+        </ul>
+        <div class="svc-price">
+          <span style="font-size:13px;color:#5E5E68">Starting from</span>
+          <span style="font-size:18px;font-weight:700;color:#A78BFA">₹25,000</span>
+        </div>
+      </div>
+
+      <!-- SERVICE 2 -->
+      <div class="card svc-big reveal" style="transition-delay:.1s">
+        <div class="icon-box svc-icon-wrap"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+        <div style="font-size:11px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:#7C5CFC;margin-bottom:8px">Monthly Retainer</div>
+        <h3 style="font-size:22px;margin-bottom:12px">Social Media Management</h3>
+        <p style="font-size:15px;color:#5E5E68;line-height:1.7;flex:1">We handle your social media completely — from strategy and content creation to scheduling and growth tracking. You focus on running your business while we build your online presence.</p>
+        <ul class="svc-features">
+          <li><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Monthly content calendar</li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Custom graphics and captions</li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Instagram & Facebook posting</li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Engagement and community management</li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Monthly performance report</li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Brand voice consistency</li>
+        </ul>
+        <div class="svc-price">
+          <span style="font-size:13px;color:#5E5E68">Starting from</span>
+          <span style="font-size:18px;font-weight:700;color:#A78BFA">₹8,000/month</span>
+        </div>
+      </div>
+
+      <!-- SERVICE 3 -->
+      <div class="card svc-big reveal" style="transition-delay:.15s">
+        <div class="icon-box svc-icon-wrap"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div>
+        <div style="font-size:11px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:#7C5CFC;margin-bottom:8px">Performance</div>
+        <h3 style="font-size:22px;margin-bottom:12px">Digital Marketing</h3>
+        <p style="font-size:15px;color:#5E5E68;line-height:1.7;flex:1">Targeted paid campaigns and organic strategies that bring the right people to your business. We focus on measurable outcomes — not just clicks and impressions.</p>
+        <ul class="svc-features">
+          <li><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Google Ads setup and management</li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Meta (Facebook/Instagram) Ads</li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Audience targeting and segmentation</li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Campaign optimization</li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>ROI tracking and reporting</li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Landing page creation</li>
+        </ul>
+        <div class="svc-price">
+          <span style="font-size:13px;color:#5E5E68">Starting from</span>
+          <span style="font-size:18px;font-weight:700;color:#A78BFA">₹10,000/month</span>
+        </div>
+      </div>
+
+      <!-- SERVICE 4 -->
+      <div class="card svc-big reveal" style="transition-delay:.2s">
+        <div class="icon-box svc-icon-wrap"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+        <div style="font-size:11px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:#7C5CFC;margin-bottom:8px">Growth System</div>
+        <h3 style="font-size:22px;margin-bottom:12px">Lead Generation</h3>
+        <p style="font-size:15px;color:#5E5E68;line-height:1.7;flex:1">We build end-to-end systems that capture potential customers, keep them warm, and convert them into paying clients — automatically working for your business even when you're not.</p>
+        <ul class="svc-features">
+          <li><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Lead capture forms and pages</li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>WhatsApp and email follow-up setup</li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Conversion funnel design</li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>CRM and lead tracking</li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Outreach strategy and scripts</li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Monthly lead reports</li>
+        </ul>
+        <div class="svc-price">
+          <span style="font-size:13px;color:#5E5E68">Starting from</span>
+          <span style="font-size:18px;font-weight:700;color:#A78BFA">₹12,000/month</span>
+        </div>
+      </div>
+
+      <!-- SERVICE 5 -->
+      <div class="card svc-big reveal" style="transition-delay:.25s">
+        <div class="icon-box svc-icon-wrap"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <div style="font-size:11px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:#7C5CFC;margin-bottom:8px">Strategy</div>
+        <h3 style="font-size:22px;margin-bottom:12px">Brand Positioning & Consulting</h3>
+        <p style="font-size:15px;color:#5E5E68;line-height:1.7;flex:1">For businesses that want a complete digital strategy — not just individual services. We work with you as a long-term partner, advising on positioning, messaging, and growth systems.</p>
+        <ul class="svc-features">
+          <li><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Brand audit and positioning</li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Digital growth roadmap</li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Competitor analysis</li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Monthly strategy calls</li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Content and messaging guidance</li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Priority support</li>
+        </ul>
+        <div class="svc-price">
+          <span style="font-size:13px;color:#5E5E68">Custom pricing</span>
+          <a href="contact.html" style="font-size:14px;font-weight:600;color:#A78BFA;text-decoration:none">Get a quote →</a>
+        </div>
+      </div>
+
+      <!-- CTA CARD -->
+      <div class="reveal" style="transition-delay:.3s">
+        <div style="padding:36px;border-radius:16px;background:linear-gradient(135deg,rgba(124,92,252,.12),rgba(91,142,239,.06));border:1px solid rgba(124,92,252,.18);height:100%;display:flex;flex-direction:column;justify-content:center">
+          <h3 style="font-size:22px;margin-bottom:14px">Not sure which service fits?</h3>
+          <p style="font-size:15px;color:#6E6E7A;line-height:1.7;margin-bottom:28px">Book a free 30-minute consultation. We'll learn about your business and tell you exactly what you need — no sales pressure.</p>
+          <a href="contact.html" class="btn-cta" style="justify-content:center">Book Free Call <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+          <a href="https://wa.me/919356294035?text=Hi!%20I%27d%20like%20to%20know%20more%20about%20Iconik%20Agency%20services." target="_blank" class="btn-wa" style="justify-content:center;margin-top:12px">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            Ask on WhatsApp
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- WHO WE WORK WITH -->
+<section class="section" style="background:rgba(255,255,255,.01);border-top:1px solid rgba(255,255,255,.04);border-bottom:1px solid rgba(255,255,255,.04)">
+  <div class="container">
+    <div style="text-align:center;max-width:600px;margin:0 auto 52px">
+      <div class="reveal"><span class="label">Who We Help</span></div>
+      <div class="reveal" style="transition-delay:.08s"><h2 style="margin-bottom:14px">We Work With Businesses Like Yours.</h2></div>
+      <div class="reveal" style="transition-delay:.14s"><p class="sub" style="margin:0 auto">From local shops to multi-location businesses — if you serve customers and want to grow online, we can help.</p></div>
+    </div>
+    <div class="who-grid">
+      <div class="who-card reveal" style="transition-delay:.05s"><div class="who-icon"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div><h3 style="font-size:15px;margin-bottom:4px">Clinics & Doctors</h3><p style="font-size:13px;color:#5E5E68">Book more patients online</p></div>
+      <div class="who-card reveal" style="transition-delay:.1s"><div class="who-icon"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg></div><h3 style="font-size:15px;margin-bottom:4px">Gyms & Fitness</h3><p style="font-size:13px;color:#5E5E68">Grow memberships and leads</p></div>
+      <div class="who-card reveal" style="transition-delay:.15s"><div class="who-icon"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div><h3 style="font-size:15px;margin-bottom:4px">Real Estate</h3><p style="font-size:13px;color:#5E5E68">Capture quality buyer leads</p></div>
+      <div class="who-card reveal" style="transition-delay:.2s"><div class="who-icon"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg></div><h3 style="font-size:15px;margin-bottom:4px">Restaurants</h3><p style="font-size:13px;color:#5E5E68">Build brand and drive footfall</p></div>
+      <div class="who-card reveal" style="transition-delay:.25s"><div class="who-icon"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div><h3 style="font-size:15px;margin-bottom:4px">Coaching & Education</h3><p style="font-size:13px;color:#5E5E68">Generate student enrollments</p></div>
+      <div class="who-card reveal" style="transition-delay:.3s"><div class="who-icon"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg></div><h3 style="font-size:15px;margin-bottom:4px">Manufacturing</h3><p style="font-size:13px;color:#5E5E68">Get more B2B inquiries</p></div>
+      <div class="who-card reveal" style="transition-delay:.35s"><div class="who-icon"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></div><h3 style="font-size:15px;margin-bottom:4px">Retail & Shops</h3><p style="font-size:13px;color:#5E5E68">Online presence that drives sales</p></div>
+      <div class="who-card reveal" style="transition-delay:.4s"><div class="who-icon"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div><h3 style="font-size:15px;margin-bottom:4px">Consultants & Coaches</h3><p style="font-size:13px;color:#5E5E68">Position yourself as the expert</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section">
+  <div style="max-width:720px;margin:0 auto;padding:0 24px">
+    <div style="text-align:center;margin-bottom:48px">
+      <div class="reveal"><span class="label">Questions</span></div>
+      <div class="reveal" style="transition-delay:.08s"><h2>Common Questions About Our Services.</h2></div>
+    </div>
+    <div class="faq-item reveal" style="transition-delay:.05s"><button class="faq-btn" onclick="toggleFaq(this)">How much does a website cost?<svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button><div class="faq-answer"><p>Websites start from ₹25,000 for a basic business site and go up based on complexity, number of pages, and features needed. We'll give you a clear quote after our first call — no hidden charges.</p></div></div>
+    <div class="faq-item reveal" style="transition-delay:.08s"><button class="faq-btn" onclick="toggleFaq(this)">Do you offer packages that combine multiple services?<svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button><div class="faq-answer"><p>Yes. Many clients start with a website and then add social media management or marketing. We offer bundled packages that are better value than hiring separately for each.</p></div></div>
+    <div class="faq-item reveal" style="transition-delay:.11s"><button class="faq-btn" onclick="toggleFaq(this)">How long does it take to see results from digital marketing?<svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button><div class="faq-answer"><p>Paid advertising can show results within days. Social media growth typically takes 60–90 days to build momentum. SEO is longer term — 3 to 6 months for meaningful ranking improvement.</p></div></div>
+    <div class="faq-item reveal" style="transition-delay:.14s"><button class="faq-btn" onclick="toggleFaq(this)">Will I own my website and social media accounts?<svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button><div class="faq-answer"><p>100% yes. Everything we build for you is yours — the website files, the hosting account, the social profiles, the content. We never hold your assets hostage.</p></div></div>
+    <div class="faq-item reveal" style="transition-delay:.17s"><button class="faq-btn" onclick="toggleFaq(this)">What happens after my website goes live?<svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button><div class="faq-answer"><p>We offer monthly maintenance and support packages covering updates, backups, security, and minor changes. You can also opt for one-time support as needed — your choice.</p></div></div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="section" style="position:relative;overflow:hidden;border-top:1px solid rgba(255,255,255,.04)">
+  <div style="position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at 50% 50%,rgba(124,92,252,.09),transparent 70%)"></div>
+  <div class="container" style="position:relative;z-index:2;text-align:center">
+    <div class="reveal"><h2 style="margin-bottom:16px">Let's Talk About Your Business.</h2></div>
+    <div class="reveal" style="transition-delay:.1s"><p class="sub" style="margin:0 auto 36px">Book a free 30-minute call. No pressure, no obligation — just a real conversation about your growth.</p></div>
+    <div class="reveal" style="transition-delay:.2s;display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
+      <a href="contact.html" class="btn-cta" style="font-size:16px;padding:16px 36px">Book Free Consultation <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      <a href="https://wa.me/919356294035?text=Hi%20Iconik!%20I%20want%20to%20discuss%20your%20services." target="_blank" class="btn-wa" style="padding:16px 36px;font-size:15px"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>WhatsApp Us</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand"><a href="index.html" class="footer-logo"><div class="footer-logo-icon">I</div><span class="footer-logo-text">Iconik Agency</span></a><p>Helping businesses grow online with modern websites, social media, and digital marketing. Based in Chh. Sambhajinagar, Maharashtra.</p></div>
+    <div class="footer-col"><h4>Pages</h4><a href="index.html">Home</a><a href="services.html">Services</a><a href="work.html">Our Work</a><a href="process.html">Process</a><a href="contact.html">Contact</a></div>
+    <div class="footer-col"><h4>Services</h4><a href="services.html">Website Design</a><a href="services.html">Social Media</a><a href="services.html">Digital Marketing</a><a href="services.html">Lead Generation</a></div>
+    <div class="footer-col"><h4>Contact</h4><a href="mailto:iconik194@gmail.com">iconik194@gmail.com</a><a href="tel:+919356294035">+91 93562 94035</a><a href="https://wa.me/919356294035" target="_blank">WhatsApp</a><a href="contact.html">Book a Call</a></div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2026 Iconik Agency · Chh. Sambhajinagar, Maharashtra</span>
+    <div class="footer-social">
+      <a href="https://www.instagram.com/iconikagency" target="_blank" class="social-btn" aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+      <a href="https://www.facebook.com/iconikagency" target="_blank" class="social-btn" aria-label="Facebook"><svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+    </div>
+  </div>
+</footer>
+
+<script>
+let menuOpen=false;
+function toggleMenu(){menuOpen=!menuOpen;document.getElementById("mobileMenu").style.display=menuOpen?"flex":"none";document.getElementById("menuIcon").style.display=menuOpen?"none":"block";document.getElementById("closeIcon").style.display=menuOpen?"block":"none";}
+function toggleFaq(btn){const item=btn.closest(".faq-item");const wasOpen=item.classList.contains("open");document.querySelectorAll(".faq-item.open").forEach(i=>i.classList.remove("open"));if(!wasOpen)item.classList.add("open");}
+const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add("visible");obs.unobserve(e.target);}}),{threshold:.1});
+document.querySelectorAll(".reveal").forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>

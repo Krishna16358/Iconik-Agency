@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Contact | Iconik Agency — Book a Free Consultation</title>
+<meta name="description" content="Book a free 30-minute consultation with Iconik Agency. Let's talk about your business and how we can help you grow online."/>
+<link rel="stylesheet" href="_shared.css"/>
+<style>
+.contact-grid{display:grid;grid-template-columns:1fr 1.5fr;gap:56px;max-width:1000px;margin:0 auto}
+.contact-info-item{display:flex;align-items:flex-start;gap:14px;margin-bottom:24px}
+.contact-info-icon{width:42px;height:42px;border-radius:11px;background:rgba(124,92,252,.09);display:flex;align-items:center;justify-content:center;color:#7C5CFC;flex-shrink:0}
+.contact-info-label{font-size:12px;font-weight:600;color:#6E6E7A;margin-bottom:3px;letter-spacing:.03em;text-transform:uppercase}
+.contact-info-val{font-size:15px;color:#C0C0CC;font-weight:500}
+.contact-info-val a{color:#C0C0CC;text-decoration:none;transition:color .2s}
+.contact-info-val a:hover{color:#A78BFA}
+.form-card{background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.07);border-radius:20px;padding:36px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.field{margin-bottom:16px}
+.field-label{font-size:13px;color:#8A8A96;font-weight:500;display:block;margin-bottom:7px}
+.field-req{color:#7C5CFC}
+.submit-btn{width:100%;padding:15px;border-radius:12px;border:none;background:linear-gradient(135deg,#7C5CFC,#5B44E8);color:#fff;font-size:16px;font-weight:600;cursor:pointer;font-family:inherit;transition:transform .25s,box-shadow .25s;display:flex;align-items:center;justify-content:center;gap:8px}
+.submit-btn:hover{transform:translateY(-1px);box-shadow:0 10px 28px rgba(124,92,252,.35)}
+.booking-modal-overlay{position:fixed;inset:0;z-index:500;background:rgba(0,0,0,.78);backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;padding:20px;overflow-y:auto}
+.booking-modal{width:100%;max-width:540px;background:#161618;border-radius:20px;border:1px solid rgba(255,255,255,.08);box-shadow:0 40px 80px rgba(0,0,0,.5);overflow:hidden;margin:auto;position:relative}
+.modal-header{padding:22px 26px 18px;border-bottom:1px solid rgba(255,255,255,.06);display:flex;justify-content:space-between;align-items:center;background:rgba(124,92,252,.04)}
+.modal-close{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);border-radius:8px;padding:7px;cursor:pointer;color:#888;display:flex;align-items:center;transition:background .2s}
+.modal-close:hover{background:rgba(255,255,255,.1)}
+.progress-bar{height:3px;background:rgba(255,255,255,.05)}
+.progress-fill{height:100%;background:linear-gradient(90deg,#7C5CFC,#5B8DEF);transition:width .4s cubic-bezier(.16,1,.3,1);border-radius:0 2px 2px 0}
+.modal-body{padding:26px}
+.m-field{margin-bottom:14px}
+.m-label{font-size:13px;color:#8A8A96;font-weight:500;display:block;margin-bottom:7px}
+.m-req{color:#7C5CFC}
+.date-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+.time-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.pick-btn{padding:10px 6px;border-radius:10px;cursor:pointer;border:1px solid rgba(255,255,255,.07);background:rgba(255,255,255,.03);color:#9A9AAA;font-size:12px;font-family:inherit;transition:all .2s;text-align:center;width:100%;line-height:1.3}
+.pick-btn.sel{border-color:#7C5CFC;background:rgba(124,92,252,.12);color:#A78BFA;font-weight:600}
+.m-btns{display:flex;gap:10px;margin-top:6px}
+.btn-m{flex:1;display:flex;align-items:center;justify-content:center;gap:8px;padding:13px 20px;border-radius:11px;border:none;background:linear-gradient(135deg,#7C5CFC,#6343E0);color:#fff;font-size:15px;font-weight:600;cursor:pointer;font-family:inherit;transition:opacity .2s}
+.btn-m:disabled{background:rgba(255,255,255,.05);color:#4A4A56;cursor:not-allowed}
+.btn-m.green{background:linear-gradient(135deg,#34C98A,#1fa870)}
+.btn-bk{padding:13px 14px;border-radius:11px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);color:#888;cursor:pointer;display:flex;align-items:center}
+.review-box{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:16px 18px;margin-bottom:16px}
+.review-row{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:14px}
+.review-row:last-child{border-bottom:none}
+.success-circle{width:64px;height:64px;border-radius:50%;background:rgba(52,201,138,.12);border:1px solid rgba(52,201,138,.25);display:flex;align-items:center;justify-content:center;margin:0 auto 20px;color:#34C98A}
+.faq-item{border-radius:12px;border:1px solid rgba(255,255,255,.06);overflow:hidden;transition:background .3s;margin-bottom:8px}
+.faq-item.open{background:rgba(255,255,255,.02)}
+.faq-btn{width:100%;display:flex;justify-content:space-between;align-items:center;padding:18px 22px;background:none;border:none;color:#D8D8E0;font-size:15px;font-weight:600;cursor:pointer;text-align:left;font-family:inherit;gap:12px}
+.faq-btn svg{min-width:17px;color:#5E5E68;transition:transform .3s;flex-shrink:0}
+.faq-item.open .faq-btn svg{transform:rotate(180deg)}
+.faq-answer{max-height:0;overflow:hidden;transition:max-height .4s cubic-bezier(.16,1,.3,1)}
+.faq-item.open .faq-answer{max-height:300px}
+.faq-answer p{padding:0 22px 18px;font-size:14px;color:#5E5E68;line-height:1.7}
+@media(max-width:860px){.contact-grid{grid-template-columns:1fr;gap:36px}}
+@media(max-width:540px){.form-row{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo"><div class="nav-logo-icon">I</div><span class="nav-logo-text">Iconik</span><span class="nav-logo-sub">Agency</span></a>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html"    class="nav-link">Home</a>
+      <a href="services.html" class="nav-link">Services</a>
+      <a href="work.html"     class="nav-link">Our Work</a>
+      <a href="process.html"  class="nav-link">Process</a>
+      <a href="contact.html"  class="nav-link active">Contact</a>
+      <a href="contact.html"  class="btn-cta nav-cta" onclick="openBooking();return false">Book Free Call</a>
+    </div>
+    <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+      <svg id="menuIcon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      <svg id="closeIcon" style="display:none" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html"    class="nav-link">Home</a>
+    <a href="services.html" class="nav-link">Services</a>
+    <a href="work.html"     class="nav-link">Our Work</a>
+    <a href="process.html"  class="nav-link">Process</a>
+    <a href="contact.html"  class="nav-link active">Contact</a>
+    <button class="btn-cta" onclick="openBooking();closeMenu()" style="border:none">Book Free Call</button>
+  </div>
+</nav>
+
+<!-- PAGE HERO -->
+<section class="page-hero" style="padding-bottom:60px">
+  <div class="page-hero-orb anim-orb1" style="top:0;left:20%;width:350px;height:350px;background:radial-gradient(circle,rgba(124,92,252,.11),transparent 65%)"></div>
+  <div class="page-hero-orb anim-orb2" style="bottom:0;right:15%;width:280px;height:280px;background:radial-gradient(circle,rgba(52,201,138,.07),transparent 65%)"></div>
+  <div class="page-hero-grid"></div>
+  <div style="position:relative;z-index:2;max-width:680px;margin:0 auto">
+    <div class="reveal"><span class="label">Get In Touch</span></div>
+    <div class="reveal" style="transition-delay:.08s"><h1 style="margin-bottom:18px">Let's Talk About <span style="background:linear-gradient(135deg,#9B7BFF,#7C5CFC,#5B8DEF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">Your Business</span></h1></div>
+    <div class="reveal" style="transition-delay:.15s"><p class="sub" style="margin:0 auto 32px">Book a free 30-minute consultation, send us a message, or just WhatsApp us directly. We respond within a few hours.</p></div>
+    <div class="reveal" style="transition-delay:.22s;display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+      <button onclick="openBooking()" class="btn-cta" style="font-size:15px">Book Free 30-Min Call <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button>
+      <a href="https://wa.me/919356294035?text=Hi%20Iconik%20Agency!%20I%27d%20like%20to%20discuss%20growing%20my%20business." target="_blank" class="btn-wa" style="font-size:15px"><svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>WhatsApp Us Now</a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT BODY -->
+<section class="section" style="border-top:1px solid rgba(255,255,255,.04)">
+  <div style="max-width:1000px;margin:0 auto;padding:0 24px">
+    <div class="contact-grid">
+      <!-- LEFT INFO -->
+      <div class="reveal">
+        <h2 style="font-size:28px;margin-bottom:8px;letter-spacing:-.02em">Talk to us directly.</h2>
+        <p style="font-size:15px;color:#6E6E7A;line-height:1.7;margin-bottom:32px">We're a small team. When you reach out, you talk to the people who'll actually work on your project.</p>
+        <div class="contact-info-item">
+          <div class="contact-info-icon"><svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+          <div><div class="contact-info-label">Email</div><div class="contact-info-val"><a href="mailto:iconik194@gmail.com">iconik194@gmail.com</a></div></div>
+        </div>
+        <div class="contact-info-item">
+          <div class="contact-info-icon"><svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.63 3.42 2 2 0 0 1 3.6 1.23h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9a16 16 0 0 0 6 6l.92-1.87a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 15.5v1.42z"/></svg></div>
+          <div><div class="contact-info-label">Phone</div><div class="contact-info-val"><a href="tel:+919356294035">+91 93562 94035</a></div></div>
+        </div>
+        <div class="contact-info-item">
+          <div class="contact-info-icon"><svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+          <div><div class="contact-info-label">WhatsApp (Business)</div><div class="contact-info-val"><a href="https://wa.me/919356294035" target="_blank">+91 93562 94035</a></div></div>
+        </div>
+        <div class="contact-info-item">
+          <div class="contact-info-icon"><svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
+          <div><div class="contact-info-label">Location</div><div class="contact-info-val">Chh. Sambhajinagar (Aurangabad), Maharashtra</div></div>
+        </div>
+        <div style="margin-top:28px;padding:20px;border-radius:14px;background:rgba(124,92,252,.05);border:1px solid rgba(124,92,252,.12)">
+          <p style="font-size:13px;color:#7C5CFC;font-weight:600;margin-bottom:6px;text-transform:uppercase;letter-spacing:.04em">Response Time</p>
+          <p style="font-size:15px;color:#C0C0CC;font-weight:500">We reply within a few hours on WhatsApp. Email within 24 hours.</p>
+        </div>
+      </div>
+      <!-- RIGHT FORM -->
+      <div class="reveal" style="transition-delay:.12s">
+        <div class="form-card">
+          <h3 style="font-size:20px;margin-bottom:6px">Send us a message</h3>
+          <p style="font-size:14px;color:#6E6E7A;margin-bottom:24px">Fill this out and we'll get back to you via WhatsApp or email.</p>
+          <div id="formArea">
+            <form id="contactForm" onsubmit="sendForm(event)">
+              <div class="form-row">
+                <div class="field"><label class="field-label">Full Name <span class="field-req">*</span></label><input name="name" placeholder="Your name" required/></div>
+                <div class="field"><label class="field-label">Email</label><input name="email" type="email" placeholder="you@email.com"/></div>
+              </div>
+              <div class="form-row">
+                <div class="field"><label class="field-label">Phone <span class="field-req">*</span></label><input name="phone" placeholder="+91 XXXXX XXXXX" required/></div>
+                <div class="field"><label class="field-label">Business Name</label><input name="business" placeholder="Your business"/></div>
+              </div>
+              <div class="field"><label class="field-label">Service Needed</label>
+                <select name="service"><option value="" disabled selected>Select a service</option><option>Website Design & Development</option><option>Social Media Management</option><option>Digital Marketing</option><option>Lead Generation</option><option>Brand Positioning</option><option>Growth Consulting</option><option>Full Package</option></select>
+              </div>
+              <div class="field"><label class="field-label">Tell us about your project</label><textarea name="message" placeholder="What's your biggest challenge right now? What are you trying to achieve?" rows="4" style="resize:vertical"></textarea></div>
+              <button type="submit" class="submit-btn">Send Message <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section" style="background:rgba(255,255,255,.01);border-top:1px solid rgba(255,255,255,.04);border-bottom:1px solid rgba(255,255,255,.04)">
+  <div style="max-width:720px;margin:0 auto;padding:0 24px">
+    <div style="text-align:center;margin-bottom:48px">
+      <div class="reveal"><span class="label">FAQ</span></div>
+      <div class="reveal" style="transition-delay:.08s"><h2>Quick Answers.</h2></div>
+    </div>
+    <div class="faq-item reveal" style="transition-delay:.05s"><button class="faq-btn" onclick="toggleFaq(this)">How do I book a consultation?<svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button><div class="faq-answer"><p>Click "Book Free Call" on this page, pick a date and time, fill in your details, and you're booked. We'll contact you to confirm within a few hours via WhatsApp.</p></div></div>
+    <div class="faq-item reveal" style="transition-delay:.08s"><button class="faq-btn" onclick="toggleFaq(this)">Is the consultation really free?<svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button><div class="faq-answer"><p>100% free, no strings attached. We use the call to understand your business and tell you honestly what you need. If we're a good fit, we'll send a proposal. If not, we'll point you in the right direction.</p></div></div>
+    <div class="faq-item reveal" style="transition-delay:.11s"><button class="faq-btn" onclick="toggleFaq(this)">What should I prepare for the consultation?<svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button><div class="faq-answer"><p>Nothing formal needed. Just have a rough idea of what you want to achieve — more leads, better brand, more sales, a first website — and we'll take it from there.</p></div></div>
+    <div class="faq-item reveal" style="transition-delay:.14s"><button class="faq-btn" onclick="toggleFaq(this)">How quickly can you start my project?<svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button><div class="faq-answer"><p>We can typically start within 3–5 business days of receiving your deposit and project brief. Rush timelines can be arranged if needed.</p></div></div>
+    <div class="faq-item reveal" style="transition-delay:.17s"><button class="faq-btn" onclick="toggleFaq(this)">Do you work with businesses outside Aurangabad?<svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></button><div class="faq-answer"><p>Yes — we work with businesses across Maharashtra and all over India. Everything is handled remotely via WhatsApp, email, and video calls. Location is never a barrier.</p></div></div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand"><a href="index.html" class="footer-logo"><div class="footer-logo-icon">I</div><span class="footer-logo-text">Iconik Agency</span></a><p>Helping businesses grow online with modern websites, social media, and digital marketing. Based in Chh. Sambhajinagar, Maharashtra.</p></div>
+    <div class="footer-col"><h4>Pages</h4><a href="index.html">Home</a><a href="services.html">Services</a><a href="work.html">Our Work</a><a href="process.html">Process</a><a href="contact.html">Contact</a></div>
+    <div class="footer-col"><h4>Services</h4><a href="services.html">Website Design</a><a href="services.html">Social Media</a><a href="services.html">Digital Marketing</a><a href="services.html">Lead Generation</a></div>
+    <div class="footer-col"><h4>Contact</h4><a href="mailto:iconik194@gmail.com">iconik194@gmail.com</a><a href="tel:+919356294035">+91 93562 94035</a><a href="https://wa.me/919356294035" target="_blank">WhatsApp</a></div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2026 Iconik Agency · Chh. Sambhajinagar, Maharashtra</span>
+    <div class="footer-social">
+      <a href="https://www.instagram.com/iconikagency" target="_blank" class="social-btn" aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+      <a href="https://www.facebook.com/iconikagency" target="_blank" class="social-btn" aria-label="Facebook"><svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+    </div>
+  </div>
+</footer>
+
+<!-- BOOKING MODAL -->
+<div id="bookingOverlay" class="booking-modal-overlay" onclick="if(event.target===this)closeBooking()">
+  <div class="booking-modal">
+    <div class="modal-header">
+      <div>
+        <div style="font-size:12px;color:#7C5CFC;font-weight:600;margin-bottom:4px;letter-spacing:.05em;text-transform:uppercase">Free Consultation</div>
+        <h3 style="font-size:20px;font-weight:700;color:#F0F0F5;letter-spacing:-.02em;margin:0" id="modalTitle">Your Info</h3>
+      </div>
+      <button class="modal-close" onclick="closeBooking()"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    </div>
+    <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:25%"></div></div>
+    <div class="modal-body" id="modalBody"></div>
+  </div>
+</div>
+
+<script>
+const WA = "919356294035";
+const OWNER_PW = "iconik2024";
+const TIMES = ["9:00 AM","10:00 AM","11:00 AM","12:00 PM","2:00 PM","3:00 PM","4:00 PM","5:00 PM"];
+const SVCS = ["Website Design & Development","Social Media Management","Digital Marketing","Lead Generation","Brand Positioning","Growth Consulting","Not sure yet"];
+const BUDGETS = ["Under ₹10,000/month","₹10,000 – ₹25,000/month","₹25,000 – ₹50,000/month","₹50,000+/month","One-time project"];
+const TITLES = ["Your Info","Pick a Time","Tell Us More","Review & Confirm"];
+
+let step=1, bk={name:"",email:"",phone:"",business:"",date:"",time:"",service:"",problem:"",goal:"",budget:""};
+
+function workingDates(){const r=[];const t=new Date();for(let i=1;r.length<10;i++){const d=new Date(t);d.setDate(t.getDate()+i);if(d.getDay()!==0&&d.getDay()!==6)r.push(d);}return r;}
+function fmtDate(d){return d.toLocaleDateString("en-IN",{weekday:"short",day:"numeric",month:"short"});}
+
+function openBooking(){step=1;bk={name:"",email:"",phone:"",business:"",date:"",time:"",service:"",problem:"",goal:"",budget:""};render();document.getElementById("bookingOverlay").style.display="flex";document.body.style.overflow="hidden";}
+function closeBooking(){document.getElementById("bookingOverlay").style.display="none";document.body.style.overflow="";}
+
+function render(){
+  document.getElementById("progressFill").style.width=(step/4*100)+"%";
+  document.getElementById("modalTitle").textContent=TITLES[step-1]||"Done";
+  const b=document.getElementById("modalBody");
+  if(step===1)b.innerHTML=s1();
+  else if(step===2)b.innerHTML=s2();
+  else if(step===3)b.innerHTML=s3();
+  else b.innerHTML=s4();
+}
+
+function s1(){return`<p style="font-size:14px;color:#6E6E7A;margin-bottom:16px">Tell us a bit about yourself so we can prepare for the call.</p>
+<div class="m-field"><label class="m-label">Full Name <span class="m-req">*</span></label><input id="b_name" placeholder="Your name" value="${bk.name}" oninput="bk.name=this.value"/></div>
+<div class="m-field"><label class="m-label">Email <span class="m-req">*</span></label><input id="b_email" type="email" placeholder="you@email.com" value="${bk.email}" oninput="bk.email=this.value"/></div>
+<div class="m-field"><label class="m-label">Phone <span class="m-req">*</span></label><input id="b_phone" placeholder="+91 XXXXX XXXXX" value="${bk.phone}" oninput="bk.phone=this.value"/></div>
+<div class="m-field" style="margin-bottom:20px"><label class="m-label">Business Name <span class="m-req">*</span></label><input id="b_biz" placeholder="Your business" value="${bk.business}" oninput="bk.business=this.value"/></div>
+<div class="m-btns"><button class="btn-m" onclick="n1()">Continue <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button></div>`;}
+
+function s2(){const dates=workingDates();const dBtns=dates.map(d=>{const l=fmtDate(d);return`<button class="pick-btn${bk.date===l?" sel":""}" onclick="pickD('${l}',this)">${l}</button>`;}).join("");const tBtns=TIMES.map(t=>`<button class="pick-btn${bk.time===t?" sel":""}" onclick="pickT('${t}',this)">${t}</button>`).join("");
+return`<p style="font-size:14px;color:#6E6E7A;margin-bottom:16px">Pick a date and time. All times are IST.</p>
+<div class="m-field"><label class="m-label">Date <span class="m-req">*</span></label><div class="date-grid">${dBtns}</div></div>
+<div class="m-field" style="margin-bottom:20px"><label class="m-label">Time <span class="m-req">*</span></label><div class="time-grid">${tBtns}</div></div>
+<div class="m-btns"><button class="btn-bk" onclick="step=1;render()"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg></button><button class="btn-m" onclick="n2()">Continue <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button></div>`;}
+
+function s3(){const so=SVCS.map(s=>`<option${bk.service===s?" selected":""}>${s}</option>`).join("");const bo=BUDGETS.map(b=>`<option${bk.budget===b?" selected":""}>${b}</option>`).join("");
+return`<p style="font-size:14px;color:#6E6E7A;margin-bottom:16px">Help us prepare for your call.</p>
+<div class="m-field"><label class="m-label">Service Interested In <span class="m-req">*</span></label><select id="b_svc" onchange="bk.service=this.value"><option value="" disabled ${!bk.service?"selected":""}>Select</option>${so}</select></div>
+<div class="m-field"><label class="m-label">Biggest Challenge <span class="m-req">*</span></label><textarea id="b_prob" rows="3" placeholder="e.g. No website, not getting leads..." style="resize:none" oninput="bk.problem=this.value">${bk.problem}</textarea></div>
+<div class="m-field"><label class="m-label">Main Goal</label><input id="b_goal" placeholder="e.g. 10 new clients/month" value="${bk.goal}" oninput="bk.goal=this.value"/></div>
+<div class="m-field" style="margin-bottom:20px"><label class="m-label">Budget Range</label><select id="b_bud" onchange="bk.budget=this.value"><option value="" disabled ${!bk.budget?"selected":""}>Select</option>${bo}</select></div>
+<div class="m-btns"><button class="btn-bk" onclick="step=2;render()"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg></button><button class="btn-m" onclick="n3()">Review <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button></div>`;}
+
+function s4(){const rows=[["Name",bk.name],["Email",bk.email],["Phone",bk.phone],["Business",bk.business],["Date",bk.date],["Time",bk.time],["Service",bk.service],["Challenge",bk.problem],bk.goal?["Goal",bk.goal]:null,bk.budget?["Budget",bk.budget]:null].filter(Boolean);
+return`<p style="font-size:14px;color:#6E6E7A;margin-bottom:14px">Review your details before confirming.</p>
+<div class="review-box">${rows.map(([k,v])=>`<div class="review-row"><span style="color:#6E6E7A">${k}</span><span style="color:#C0C0CC;font-weight:500;max-width:60%;text-align:right">${v}</span></div>`).join("")}</div>
+<div class="m-btns"><button class="btn-bk" onclick="step=3;render()"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg></button><button class="btn-m green" onclick="confirm()">Confirm Booking <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></button></div>`;}
+
+function success(){const wa=`https://wa.me/${WA}?text=${encodeURIComponent("Hi Iconik Agency! I just booked a consultation.\n\nName: "+bk.name+"\nBusiness: "+bk.business+"\nDate: "+bk.date+"\nTime: "+bk.time+"\nService: "+bk.service)}`;
+document.getElementById("progressFill").style.width="100%";
+document.getElementById("modalTitle").textContent="Booking Confirmed!";
+document.getElementById("modalBody").innerHTML=`<div style="text-align:center;padding:16px 0 8px">
+<div class="success-circle"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></div>
+<h4 style="font-size:22px;font-weight:700;color:#F0F0F5;margin-bottom:10px;letter-spacing:-.02em">You're booked!</h4>
+<p style="font-size:15px;color:#6E6E7A;margin-bottom:4px"><strong style="color:#B0B0BA">${bk.name}</strong>, your call is scheduled for</p>
+<p style="font-size:16px;font-weight:600;color:#A78BFA;margin-bottom:22px">${bk.date} at ${bk.time}</p>
+<p style="font-size:14px;color:#6E6E7A;margin-bottom:28px">We'll confirm via WhatsApp to <strong style="color:#B0B0BA">${bk.phone}</strong>. Feel free to message us anytime before the call.</p>
+<a href="${wa}" target="_blank" style="display:flex;align-items:center;justify-content:center;gap:10px;padding:14px 28px;border-radius:12px;background:rgba(37,211,102,.1);border:1px solid rgba(37,211,102,.2);color:#25D366;font-weight:600;font-size:15px;text-decoration:none;margin-bottom:12px"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Chat on WhatsApp</a>
+<button onclick="closeBooking()" style="width:100%;padding:12px;border-radius:10px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);color:#888;cursor:pointer;font-size:14px;font-family:inherit">Close</button>
+</div>`;}
+
+function save(b){try{const a=JSON.parse(localStorage.getItem("iconik_bookings")||"[]");a.unshift({...b,id:Date.now(),createdAt:new Date().toISOString()});localStorage.setItem("iconik_bookings",JSON.stringify(a));}catch(e){}}
+function pickD(l,btn){bk.date=l;document.querySelectorAll("#bookingOverlay .date-grid .pick-btn").forEach(b=>b.classList.remove("sel"));btn.classList.add("sel");}
+function pickT(t,btn){bk.time=t;document.querySelectorAll("#bookingOverlay .time-grid .pick-btn").forEach(b=>b.classList.remove("sel"));btn.classList.add("sel");}
+function n1(){bk.name=document.getElementById("b_name")?.value||bk.name;bk.email=document.getElementById("b_email")?.value||bk.email;bk.phone=document.getElementById("b_phone")?.value||bk.phone;bk.business=document.getElementById("b_biz")?.value||bk.business;if(!bk.name||!bk.email||!bk.phone||!bk.business){alert("Please fill in all required fields.");return;}step=2;render();}
+function n2(){if(!bk.date||!bk.time){alert("Please select a date and time.");return;}step=3;render();}
+function n3(){bk.service=document.getElementById("b_svc")?.value||bk.service;bk.problem=document.getElementById("b_prob")?.value||bk.problem;bk.goal=document.getElementById("b_goal")?.value||bk.goal;bk.budget=document.getElementById("b_bud")?.value||bk.budget;if(!bk.service||!bk.problem){alert("Please fill in the required fields.");return;}step=4;render();}
+function confirm(){save({...bk});success();}
+
+function sendForm(e){e.preventDefault();const f=e.target;const msg=encodeURIComponent("New message from website\n\nName: "+f.name.value+"\nPhone: "+f.phone.value+"\nEmail: "+(f.email.value||"N/A")+"\nBusiness: "+(f.business.value||"N/A")+"\nService: "+(f.service.value||"N/A")+"\n\nMessage:\n"+(f.message.value||"N/A"));window.open("https://wa.me/"+WA+"?text="+msg,"_blank");document.getElementById("formArea").innerHTML=`<div style="text-align:center;padding:40px 0"><svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#34C98A" stroke-width="2" style="margin-bottom:14px"><polyline points="20 6 9 17 4 12"/></svg><h3 style="color:#34C98A;margin-bottom:8px">Message sent!</h3><p style="font-size:15px;color:#6E6E7A">Opening WhatsApp with your message. We'll reply soon!</p></div>`;}
+
+function toggleFaq(btn){const item=btn.closest(".faq-item");const was=item.classList.contains("open");document.querySelectorAll(".faq-item.open").forEach(i=>i.classList.remove("open"));if(!was)item.classList.add("open");}
+let menuOpen=false;
+function toggleMenu(){menuOpen=!menuOpen;document.getElementById("mobileMenu").style.display=menuOpen?"flex":"none";document.getElementById("menuIcon").style.display=menuOpen?"none":"block";document.getElementById("closeIcon").style.display=menuOpen?"block":"none";}
+function closeMenu(){menuOpen=false;document.getElementById("mobileMenu").style.display="none";document.getElementById("menuIcon").style.display="block";document.getElementById("closeIcon").style.display="none";}
+document.addEventListener("keydown",e=>{if(e.key==="Escape")closeBooking();});
+const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add("visible");obs.unobserve(e.target);}}),{threshold:.1});
+document.querySelectorAll(".reveal").forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
